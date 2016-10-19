@@ -10,11 +10,11 @@ public class ClienteMBean extends AbstractController<Cliente>{
     
     private Cliente cliente = new Cliente();
 
-    public Cliente getCategoria() {
+    public Cliente getCliente() {
         return cliente;
     }
 
-    public void setCategoria(Cliente cliente) {
+    public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
 
