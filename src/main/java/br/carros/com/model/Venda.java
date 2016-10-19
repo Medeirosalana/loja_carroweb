@@ -23,8 +23,8 @@ public class Venda implements PersistDB{
     private List<CartaDeCredito> cartas;
     @ManyToOne
     private Cliente cliente;
-    @ManyToMany
-    private List<Carro> carro; 
+    @ManyToOne
+    private Carro carro; 
 
     public int getId() {
         return id;
@@ -58,13 +58,15 @@ public class Venda implements PersistDB{
         this.cliente = cliente;
     }
 
-    public List<Carro> getCarro() {
+    public Carro getCarro() {
         return carro;
     }
 
-    public void setCarro(List<Carro> carro) {
+    public void setCarro(Carro carro) {
         this.carro = carro;
     }
+
+   
 
     @Override
     public String toString() {

@@ -26,56 +26,41 @@
                         </p:inputText>
                             <br/>
                            
-                        <p:outputLabel value="Parcela:"/>
-                        <p:inputText value="#{cartaDeCreditoMBean.cartaDeCredito.parcela}" requiredMessage="Campo parcela obrigatório">                            
+                        <p:outputLabel value="CPF:"/>
+                        <p:inputText value="#{clienteMBean.cliente.cpf}" requiredMessage="Campo CPF obrigatório">                            
                         </p:inputText>
                         <br/>
                         
-                        <p:outputLabel value="Prazo:"/>
-                        <p:inputText value="#{cartaDeCreditoMBean.cartaDeCredito.prazo}" requiredMessage="Campo prazo obrigatório">                           
+                        <p:outputLabel value="Nome:"/>
+                        <p:inputText value="#{clienteMBean.cliente.nome}" requiredMessage="Campo nome obrigatório">                           
                         </p:inputText>
-                        <br/>
+                        <br/>                
                        
-                        <p:outputLabel value="Proposta:"/>
-                        <p:inputText value="#{cartaDeCreditoMBean.cartaDeCredito.proposta}" requiredMessage="Campo proposta obrigatório">                            
-                        </p:inputText>
-                        <br/>
-                        
-                        <p:outputLabel value="Valor Inicial:"/>
-                        <p:inputText value="#{cartaDeCreditoMBean.cartaDeCredito.valor_inicial}" requiredMessage="Campo valor inicial obrigatório" >                            
-                        </p:inputText>
-                        <br/>
                        
-                        <p:outputLabel value="Valor Final:"/>
-                        <p:inputText value="#{cartaDeCreditoMBean.cartaDeCredito.valor_final}" requiredMessage="Campo valor final obrigatório">
-                           
-                        </p:inputText>
-                        <br/>
-                       
-                        <p:commandButton value="SALVAR" icon="ui-icon-disk" action="#{cartaDeCreditoMBean.salvar}" ajax="false"/>
+                        <p:commandButton value="SALVAR" icon="ui-icon-disk" action="#{clienteMBean.salvar}" ajax="false"/>
                     </p:panelGrid>
                    
                 </h:form>
             </p:tab>
-            <p:tab title="Cartas de Credito">
+            <p:tab title="Clientes">
             <h:form>
                 
-                <p:dataTable var="carta" value="#{cartaDeCreditoMBean.listaCompleta}" scrollable="true" scrollHeight="300">
-                     <p:column headerText="Cota">
-                         <h:outputText value="#{carta.cota}"/>
+                <p:dataTable var="cliente" value="#{clienteMBean.listaCompleta}" scrollable="true" scrollHeight="300">
+                     <p:column headerText="CPF">
+                         <h:outputText value="#{cliente.cpf}"/>
                      </p:column>
-                     <p:column headerText="Grupo">
-                         <h:outputText value="#{carta.grupo}"/>
+                     <p:column headerText="Nome">
+                         <h:outputText value="#{cliente.nome}"/>
                      </p:column>
-                     <p:column headerText="Parcela">
-                         <h:outputText value="#{carta.parcela}"/>
+                     <p:column headerText="Agencia">
+                         <h:outputText value="#{cliente.agencia}"/>
                      </p:column>
-                    <p:column headerText="Valor final">
-                        <h:outputText value="#{carta.valor_final}"/>
+                    <p:column headerText="Conta">
+                        <h:outputText value="#{cliente.conta}"/>
                      </p:column>
                       <p:column headerText="Ação">
-                          <p:commandButton icon="ui-icon-search" ajax="false" action="#{cartaDeCreditoMBean.selecionar(carta)}" />
-                          <p:commandButton icon="ui-icon-trash" ajax="false" action="#{cartaDeCreditoMBean.deletar(carta)}" onclick="return confirm('Excluir?')"/>
+                          <p:commandButton icon="ui-icon-search" ajax="false" action="#{clienteMBean.selecionar(cliente)}" />
+                          <p:commandButton icon="ui-icon-trash" ajax="false" action="#{clienteMBean.deletar(cliente)}" onclick="return confirm('Excluir?')"/>
                      </p:column>
                 
             
