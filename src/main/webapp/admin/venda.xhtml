@@ -41,32 +41,13 @@
             </p:selectOneMenu>
                             
                             
-                            <p:commandButton value="   " icon=" ui-icon-plusthick" action="#{vendaMBean.salvarcartas}" update="tabela"/>
+                            <p:commandButton value="SALVAR" icon=" ui-icon-plusthick" action="#{vendaMBean.salvar}" ajax="false"/>
                             <br/>
-                            <p:commandButton value="SALVAR" icon=" ui-icon-disk" action="#{vendaMBean.salvar}" ajax="false"/>
-                            <h:form>
-                
-                                <p:dataTable var="produto" value="#{vendaMBean.cartas}" scrollable="true" scrollHeight="300" id="tabela">
-                     <p:column headerText="Valor final">
-                         <h:outputText value="#{produto.valor_final}"/>
-                     </p:column>
-                    <p:column headerText="Cota">
-                        <h:outputText value="#{produto.cota}"/>
-                     </p:column>
-                     <p:column headerText="Grupo">
-                         <h:outputText value="#{produto.grupo}"/>
-                     </p:column>
-                    
-                      <p:column headerText="Ação">
                           
-                          <p:commandButton icon="ui-icon-trash" ajax="false" action="#{vendaMBean.deletar(venda)}" onclick="return confirm('Excluir?')"/>
-                     </p:column>
-                                    <br/>
                 
             
              
-                 </p:dataTable>
-                </h:form>
+               
                            
                     </p:panelGrid>
                    
@@ -77,7 +58,9 @@
                 
                 <p:dataTable var="venda" value="#{vendaMBean.listaCompleta}" scrollable="true" scrollHeight="300">
                      <p:column headerText="Data de venda">
-                         <h:outputText value="#{venda.dt_venda}"/>
+                         <h:outputText value="#{venda.dt_venda}">
+                          <f:convertDateTime   pattern="dd/MM/yyyy " />
+                         </h:outputText>
                      </p:column>
                     <p:column headerText="carro">
                         <h:outputText value="#{venda.carro.modelo}"/>

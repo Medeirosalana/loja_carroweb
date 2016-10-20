@@ -19,8 +19,8 @@ public class Venda implements PersistDB{
  private int id;
     @Temporal(TemporalType.DATE)
     private Date dt_venda;
-    @ManyToMany
-    private List<CartaDeCredito> cartas;
+    @ManyToOne
+    private CartaDeCredito cartas;
     @ManyToOne
     private Cliente cliente;
     @ManyToOne
@@ -42,13 +42,15 @@ public class Venda implements PersistDB{
         this.dt_venda = dt_venda;
     }
 
-    public List<CartaDeCredito> getCartas() {
+    public CartaDeCredito getCartas() {
         return cartas;
     }
 
-    public void setCartas(List<CartaDeCredito> cartas) {
+    public void setCartas(CartaDeCredito cartas) {
         this.cartas = cartas;
     }
+
+    
 
     public Cliente getCliente() {
         return cliente;

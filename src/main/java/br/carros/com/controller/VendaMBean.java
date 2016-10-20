@@ -21,7 +21,7 @@ public class VendaMBean extends AbstractController<Venda>{
     private Venda venda = new Venda();
     private Carro carro = new Carro();
     private CartaDeCredito carta = new CartaDeCredito();
-    private List<CartaDeCredito> cartas  = new ArrayList();
+   
     private Cliente cliente = new Cliente();
 
     public Venda getVenda() {
@@ -39,13 +39,7 @@ public class VendaMBean extends AbstractController<Venda>{
         this.carro = carro;
     }
 
-   public List<CartaDeCredito> getCartas() {
-        return cartas;
-    }
-
-    public void setCartas(List<CartaDeCredito> cartas) {
-        this.cartas = cartas;
-    }
+  
     
   public CartaDeCredito getCarta() {
         return carta;
@@ -81,9 +75,9 @@ public class VendaMBean extends AbstractController<Venda>{
             if (venda.getId()==0) {
                 carro = cardao.findByPrimaryKey(carro.getId());
                 cliente = clidao.findByPrimaryKey(cliente.getId());
-                
+                carta = cdao.findByPrimaryKey(carta.getId());
                 venda.setCarro(carro);
-                venda.setCartas(cartas);
+                venda.setCartas(carta);
                 venda.setCliente(cliente);
                 dao.create(venda);
             } else {
@@ -97,26 +91,7 @@ public class VendaMBean extends AbstractController<Venda>{
         }
         return null;
     }
-     public String salvarcartas() {
-         CartaDeCreditoDAO dao = new CartaDeCreditoDAO();
-         
-        try {
-            carta = dao.findByPrimaryKey(carta.getId());
-            
-            if (carta.getId() != 0 ) {
-                
-               
-                cartas.add(carta);
-                
-            } 
-            
-        } finally {
-        carta = new CartaDeCredito();
-
-            
-        }
-        return null;
-    }
+    
 
     public String selecionar(Venda venda) {
         this.venda = venda;
